@@ -7,8 +7,7 @@ exports.captchaController = void 0;
 const svg_captcha_1 = __importDefault(require("svg-captcha"));
 class CaptchaController {
     get() {
-        const c = svg_captcha_1.default.create();
-        return c;
+        return svg_captcha_1.default.create();
     }
 }
 const captchaController = new CaptchaController();

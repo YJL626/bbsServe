@@ -1,9 +1,8 @@
-import svgCaptcha from "svg-captcha";
+import svgCaptcha from 'svg-captcha'
 class CaptchaController {
   get() {
-    const c = svgCaptcha.create();
-    return c;
+    return svgCaptcha.create()
   }
 }
-const captchaController = new CaptchaController();
-export { captchaController };
+const captchaController = new CaptchaController()
+export { captchaController }

@@ -1,4 +1,17 @@
-import combineRouters from "koa-combine-routers";
-import { captchaRouter } from "./captcha";
-const routers = combineRouters(captchaRouter);
-export { routers };
+import compose from 'koa-compose'
+import Router from 'koa-router'
+import { readDirModules, isRouter } from '../utils/utils'
+
+//读取当前目录全部的router；
+const routerArr = readDirModules(__dirname, [
+  'index.js',
+]).filter((router: any) => isRouter(router)) as Array<Router>
+
+//对routers进行compose
+const routers = compose(routerArr.map((item) => item.routes()))
+//对AllowedMethods进行compose
+const routesAllowedMethods = compose(
+  routerArr.map((item) => item.allowedMethods())
+)
+
+export { routers, routesAllowedMethods }

@@ -4,23 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./dist/app.js"
+    "run": "nodemon ./dist/app.js",
+    "build": "tsc -w",
+    "start": "npm-run-all -p build run "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@koa/cors": "^3.1.0",
-    "@types/koa": "^2.13.1",
-    "@types/koa-bodyparser": "^4.3.0",
-    "@types/koa-router": "^7.4.1",
+    "@types/jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
-    "koa-combine-routers": "^4.0.2",
+    "koa-compose": "^4.1.0",
+    "koa-jwt": "^4.0.1",
     "koa-router": "^10.0.0",
+    "nodemailer": "^6.5.0",
     "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
-    "@types/koa__cors": "^3.0.2"
+    "@koa/cors": "^3.1.0",
+    "@types/koa": "^2.13.1",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.4.2",
+    "@types/koa__cors": "^3.0.2",
+    "@types/node": "^14.14.41",
+    "@types/nodemailer": "^6.4.1",
+    "npm-run-all": "^4.1.5"
   }
 }

@@ -8,6 +8,7 @@ const koa_router_1 = __importDefault(require("koa-router"));
 const captchaController_1 = require("../controller/captchaController");
 const captchaRouter = new koa_router_1.default();
 exports.captchaRouter = captchaRouter;
-captchaRouter.get("/captcha", (ctx, next) => {
+captchaRouter.get('/captcha', async (ctx, next) => {
     ctx.body = captchaController_1.captchaController.get();
+    await next();
 });
