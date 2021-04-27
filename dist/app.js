@@ -13,7 +13,7 @@ const app = new koa_1.default();
 //parser和跨域设置
 const jwtMiddleWare = koa_jwt_1.default({
     secret: fs_1.readFileSync('./key/rsa_public.key'),
-});
+}).unless({ path: [/^\/mail/] });
 app
     .use(koa_bodyparser_1.default())
     .use(cors_1.default())
