@@ -9,12 +9,17 @@ const promises_1 = require("fs/promises");
 const path_1 = require("path");
 class Jwt {
     async sign(data, expiresIn) {
-        const key = await promises_1.readFile(path_1.resolve('./key/rsa_private.key'));
-        const jwtData = jsonwebtoken_1.default.sign(data, key, {
-            algorithm: 'RS256',
-            expiresIn,
-        });
-        return jwtData;
+        try {
+            const key = await promises_1.readFile(path_1.resolve('./key/rsa_private.key'));
+            const jwtData = jsonwebtoken_1.default.sign(data, key, {
+                algorithm: 'RS256',
+                expiresIn,
+            });
+            return jwtData;
+        }
+        catch (error) {
+            throw 'sign ' + error;
+        }
     }
     async verify(token) {
         const key = await promises_1.readFile(path_1.resolve('./key/rsa_private.key'));

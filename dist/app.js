@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const koa_1 = __importDefault(require("koa"));
-const koa_bodyparser_1 = __importDefault(require("koa-bodyparser"));
+const koa_body_1 = __importDefault(require("koa-body"));
 const index_1 = require("./router/index");
 const cors_1 = __importDefault(require("@koa/cors"));
 const koa_jwt_1 = __importDefault(require("koa-jwt"));
@@ -13,9 +13,9 @@ const app = new koa_1.default();
 //parser和跨域设置
 const jwtMiddleWare = koa_jwt_1.default({
     secret: fs_1.readFileSync('./key/rsa_public.key'),
-}).unless({ path: [/^\/mail/] });
+}).unless({ path: [/^\/mail/, /\*?/] });
 app
-    .use(koa_bodyparser_1.default())
+    .use(koa_body_1.default())
     .use(cors_1.default())
     .use(jwtMiddleWare)
     .use(index_1.routers)
@@ -28,5 +28,15 @@ app.use(async (ctx, next) => {
         }, 200);
     });
     await next();
+});
+app.on('error', async (err, ctx) => {
+    if (err.msg && err.stateCode) {
+        ctx.status = +err.stateCode;
+        ctx.body = err.msg;
+    }
+    else {
+        ctx.status = 404;
+        ctx.body = 404;
+    }
 });
 app.listen(8000, () => console.log('success'));
