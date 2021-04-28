@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errHandle = void 0;
 const errHandle = async (err, ctx) => {
-    console.log(1);
     if (err.msg && err.stateCode) {
         ctx.status = +err.stateCode;
         ctx.body = err.msg;

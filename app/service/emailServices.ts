@@ -2,7 +2,7 @@
 import nodemailer from 'nodemailer'
 import { sendAccountConfig } from '../config/mail.config'
 import { mailAcceptConfig } from '../type'
-class MailCtl {
+class MailServices {
   //发送mail成功为true错误为false
   send: { (config: mailAcceptConfig): Promise<boolean> }
   constructor() {
@@ -20,4 +20,5 @@ class MailCtl {
     }
   }
 }
-export { MailCtl }
+const mailServices = new MailServices()
+export { mailServices }

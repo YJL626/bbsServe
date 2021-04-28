@@ -8,10 +8,24 @@ const db = mongoose.connection
 const userModel = mongoose.model(
   'users',
   new mongoose.Schema({
-    email: String,
-    password: String,
-    name: String,
-    nickName: String,
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    pwd: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    nickName: {
+      type: String,
+      required: true,
+    },
   })
 )
 db.on('error', () => {

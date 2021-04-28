@@ -12,10 +12,24 @@ mongoose_1.default.connect(db_config_1.userDatabase, {
 });
 const db = mongoose_1.default.connection;
 const userModel = mongoose_1.default.model('users', new mongoose_1.default.Schema({
-    email: String,
-    password: String,
-    name: String,
-    nickName: String,
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    pwd: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    nickName: {
+        type: String,
+        required: true,
+    },
 }));
 exports.userModel = userModel;
 db.on('error', () => {
