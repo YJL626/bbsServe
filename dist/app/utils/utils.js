@@ -22,7 +22,7 @@ const readDirModules = (path, ignoreArr) => {
 exports.readDirModules = readDirModules;
 //查看有没有router实例的方法
 const isRouter = (router) => {
-    return !!(router.routes && router.get);
+    !!(router.routes && router.get);
 };
 exports.isRouter = isRouter;
 const isPlainObject = (object) => {
@@ -42,3 +42,4 @@ function checkObjectForm(model, data) {
     });
 }
 exports.checkObjectForm = checkObjectForm;
+console.log(checkObjectForm({ a: 10 }, { a: 10 }));

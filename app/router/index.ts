@@ -6,7 +6,6 @@ import { readDirModules, isRouter } from '../utils/utils'
 const routerArr = readDirModules(__dirname, [
   'index.js',
 ]).filter((router: any) => isRouter(router)) as Array<Router>
-
 //对routers进行compose
 const routers = compose(routerArr.map((item) => item.routes()))
 //对AllowedMethods进行compose

@@ -9,7 +9,7 @@ const USER_DOES_NOT_EXISTS = 'user_does_not_exists';
 exports.USER_DOES_NOT_EXISTS = USER_DOES_NOT_EXISTS;
 const INCORRECT_USERNAME_OR_PASSWORD = {
     stateCode: 401,
-    msg: '用户名或密码错误',
+    msg: 'Incorrect username or password',
 };
 exports.INCORRECT_USERNAME_OR_PASSWORD = INCORRECT_USERNAME_OR_PASSWORD;
 const DATA_FORM_ERROR = {
