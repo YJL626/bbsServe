@@ -2,13 +2,10 @@ import { readdirSync } from 'fs'
 import Router from 'koa-router'
 import { resolve } from 'path'
 
-const readDirModules = (
-  path: string,
-  ignoreArr: Array<string>
-): any => {
+const readDirModules = (path: string, ignoreArr: Array<RegExp>): any => {
   //筛选一下忽略的数组
   const fileArr = readdirSync(path).filter(
-    (fileName) => !ignoreArr.includes(fileName)
+    (fileName) => ignoreArr.every((rule) => rule.test(fileName) === false)
   )
   //在try，catch内根据文件名去读取module，
   return fileArr.reduce((acc: Array<any>, fileName) => {
@@ -38,10 +35,7 @@ function checkObjectForm(model: object, data: object): Boolean {
       // 如果body和模型的数据类型不一致说明验证未通过
       if (typeof (data as any)[property] !== 'object') return false
       //递归的进行验证
-      return checkObjectForm(
-        (model as any)[property],
-        (data as any)[property]
-      )
+      return checkObjectForm((model as any)[property], (data as any)[property])
     }
     return (data as object).hasOwnProperty(property)
   })

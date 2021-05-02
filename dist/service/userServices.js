@@ -27,3 +27,4 @@ class UserServices {
 }
 const userServices = new UserServices();
 exports.userServices = userServices;
+//# sourceMappingURL=userServices.js.map

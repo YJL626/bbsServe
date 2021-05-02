@@ -13,3 +13,6 @@ exports.registerRouter = registerRouter;
 //首次用户传过来数据验证通过后进行验证，然后给用户发送mail，然后用户点击mail创建user
 registerRouter.post('/register', verifyMiddleware_1.verify.reqBodyIntegrity(['name', 'nickName', 'email', 'pwd']), registerController_1.registerController.verifyEmail, registerController_1.registerController.verifyName, registerController_1.registerController.sendRegisterEmail);
 registerRouter.post('/register/create', verifyMiddleware_1.verify.tokenIntegrity(['name', 'nickName', 'email', 'pwd']), middleware_1.tokenDateCopyToRequestBody, registerController_1.registerController.verifyEmail, registerController_1.registerController.verifyName, registerController_1.registerController.create);
+registerRouter.get('/check/email', middleware_1.queryDateCopyToRequestBody, verifyMiddleware_1.verify.reqBodyIntegrity(['email']), registerController_1.registerController.verifyEmail, registerController_1.registerController.backUnused);
+registerRouter.get('/check/name', middleware_1.queryDateCopyToRequestBody, verifyMiddleware_1.verify.reqBodyIntegrity(['name']), registerController_1.registerController.verifyName, registerController_1.registerController.backUnused);
+//# sourceMappingURL=register.js.map

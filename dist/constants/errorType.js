@@ -39,3 +39,4 @@ const UNAUTHORIZATION = 'UNAUTHORIZATION';
 exports.UNAUTHORIZATION = UNAUTHORIZATION;
 const UNPERMISSION = 'unpermission';
 exports.UNPERMISSION = UNPERMISSION;
+//# sourceMappingURL=errorType.js.map

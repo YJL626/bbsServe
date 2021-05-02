@@ -25,3 +25,4 @@ class AuthController {
 }
 const authController = new AuthController();
 exports.authController = authController;
+//# sourceMappingURL=authController.js.map

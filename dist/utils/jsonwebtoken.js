@@ -28,3 +28,4 @@ class Jwt {
 }
 const myJwt = new Jwt();
 exports.myJwt = myJwt;
+//# sourceMappingURL=jsonwebtoken.js.map

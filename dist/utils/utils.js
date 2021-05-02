@@ -5,7 +5,7 @@ const fs_1 = require("fs");
 const path_1 = require("path");
 const readDirModules = (path, ignoreArr) => {
     //筛选一下忽略的数组
-    const fileArr = fs_1.readdirSync(path).filter((fileName) => !ignoreArr.includes(fileName));
+    const fileArr = fs_1.readdirSync(path).filter((fileName) => ignoreArr.every((rule) => rule.test(fileName) === false));
     //在try，catch内根据文件名去读取module，
     return fileArr.reduce((acc, fileName) => {
         try {
@@ -42,3 +42,4 @@ function checkObjectForm(model, data) {
     });
 }
 exports.checkObjectForm = checkObjectForm;
+//# sourceMappingURL=utils.js.map

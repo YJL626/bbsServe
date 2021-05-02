@@ -12,8 +12,10 @@ const app = new Koa()
 //parser和跨域设置
 const jwtMiddleWare = koaJwt({
   secret: readFileSync('./key/rsa_public.key'),
-}).unless({ path: [/\/login\/email/, /^\/register$/] })
-
+}).unless({
+  path: [/\/login\/email/, /^\/register$/, /^\/captcha$/],
+  method: 'GET',
+})
 app
   .use(koaBody())
   .use(cors())

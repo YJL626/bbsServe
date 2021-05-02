@@ -54,3 +54,4 @@ class Verify {
 }
 const verify = new Verify();
 exports.verify = verify;
+//# sourceMappingURL=verifyMiddleware.js.map

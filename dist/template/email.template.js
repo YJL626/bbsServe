@@ -9,3 +9,4 @@ const generateRegisterMail = (to, href) => {
     };
 };
 exports.generateRegisterMail = generateRegisterMail;
+//# sourceMappingURL=email.template.js.map

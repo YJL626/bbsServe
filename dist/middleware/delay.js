@@ -10,3 +10,4 @@ const delay = async (ctx, next) => {
     await next();
 };
 exports.delay = delay;
+//# sourceMappingURL=delay.js.map

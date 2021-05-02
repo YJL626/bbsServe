@@ -7,6 +7,6 @@ const loginRouter = new Router()
 loginRouter.post(
   '/login/email',
   verify.reqBodyIntegrity(['email', 'pwd']),
-  authController.login,
+  authController.login
 )
 export { loginRouter }

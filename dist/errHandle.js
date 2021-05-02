@@ -12,3 +12,4 @@ const errHandle = async (err, ctx) => {
     }
 };
 exports.errHandle = errHandle;
+//# sourceMappingURL=errHandle.js.map

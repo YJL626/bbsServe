@@ -17,3 +17,4 @@ mailRouter.get('/mail', async (ctx, next) => {
     });
     await next();
 });
+//# sourceMappingURL=mail.js.map

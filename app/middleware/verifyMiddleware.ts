@@ -11,6 +11,7 @@ class Verify {
     return async function properExist(ctx: ParameterizedContext, next: Next) {
       try {
         const reqBody = ctx.request.body as object
+
         //检测reqBody的结构和model是否一致
         let isIntegrity = Array.isArray(model)
           ? model.every((property) => {

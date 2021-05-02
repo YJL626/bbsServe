@@ -10,6 +10,7 @@ import {
 import { userServices } from '../service/userServices'
 import { join } from 'node:path'
 import { myJwt } from '../utils/jsonwebtoken'
+import { createContext } from 'node:vm'
 class RegisterController {
   async verifyEmail(ctx: ParameterizedContext, next: Next) {
     const emailIsExits = await userServices.emailIsExits(ctx.request.body.email)
@@ -44,6 +45,10 @@ class RegisterController {
     } else {
       ctx.app.emit('emit', INTERNAL_USER_CREATE_FAILED_ERROR, ctx)
     }
+  }
+  async backUnused(ctx: ParameterizedContext, next: Next) {
+    ctx.status = 200
+    ctx.body = 'unused'
   }
 }
 const registerController = new RegisterController()

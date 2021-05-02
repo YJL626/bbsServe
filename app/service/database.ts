@@ -1,9 +1,11 @@
 import mongoose from 'mongoose'
 import { userDatabase } from '../config/db.config'
+mongoose.set('useCreateIndex', true)
 mongoose.connect(userDatabase, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
+
 const db = mongoose.connection
 const userModel = mongoose.model(
   'users',

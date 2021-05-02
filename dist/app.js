@@ -15,7 +15,10 @@ const app = new koa_1.default();
 //parser和跨域设置
 const jwtMiddleWare = koa_jwt_1.default({
     secret: fs_1.readFileSync('./key/rsa_public.key'),
-}).unless({ path: [/\/login\/email/, /^\/register$/] });
+}).unless({
+    path: [/\/login\/email/, /^\/register$/, /^\/captcha$/],
+    method: 'GET',
+});
 app
     .use(koa_body_1.default())
     .use(cors_1.default())
@@ -26,3 +29,4 @@ app
     .on('error', errHandle_1.errHandle);
 //模拟网络请求给服务器设置延迟
 app.listen(8000, () => console.log('success'));
+//# sourceMappingURL=app.js.map

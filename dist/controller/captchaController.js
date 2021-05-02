@@ -12,3 +12,4 @@ class CaptchaController {
 }
 const captchaController = new CaptchaController();
 exports.captchaController = captchaController;
+//# sourceMappingURL=captchaController.js.map

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userModel = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const db_config_1 = require("../config/db.config");
+mongoose_1.default.set('useCreateIndex', true);
 mongoose_1.default.connect(db_config_1.userDatabase, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -38,3 +39,4 @@ db.on('error', () => {
 db.on('open', () => {
     console.log('db open');
 });
+//# sourceMappingURL=database.js.map

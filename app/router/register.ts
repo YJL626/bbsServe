@@ -1,6 +1,9 @@
 import Router from 'koa-router'
 import { registerController } from '../controller/registerController'
-import { tokenDateCopyToRequestBody } from '../middleware/middleware'
+import {
+  tokenDateCopyToRequestBody,
+  queryDateCopyToRequestBody,
+} from '../middleware/middleware'
 import { verify } from '../middleware/verifyMiddleware'
 
 const registerRouter = new Router()
@@ -20,5 +23,19 @@ registerRouter.post(
   registerController.verifyEmail,
   registerController.verifyName,
   registerController.create
+)
+registerRouter.get(
+  '/check/email',
+  queryDateCopyToRequestBody,
+  verify.reqBodyIntegrity(['email']),
+  registerController.verifyEmail,
+  registerController.backUnused
+)
+registerRouter.get(
+  '/check/name',
+  queryDateCopyToRequestBody,
+  verify.reqBodyIntegrity(['name']),
+  registerController.verifyName,
+  registerController.backUnused
 )
 export { registerRouter }

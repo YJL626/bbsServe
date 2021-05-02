@@ -12,3 +12,4 @@ captchaRouter.get('/captcha', async (ctx, next) => {
     ctx.body = captchaController_1.captchaController.get();
     await next();
 });
+//# sourceMappingURL=captcha.js.map

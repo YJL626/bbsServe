@@ -41,6 +41,11 @@ class RegisterController {
             ctx.app.emit('emit', errorType_1.INTERNAL_USER_CREATE_FAILED_ERROR, ctx);
         }
     }
+    async backUnused(ctx, next) {
+        ctx.status = 200;
+        ctx.body = 'unused';
+    }
 }
 const registerController = new RegisterController();
 exports.registerController = registerController;
+//# sourceMappingURL=registerController.js.map

@@ -12,3 +12,4 @@ const sendAccountConfig = {
     },
 };
 exports.sendAccountConfig = sendAccountConfig;
+//# sourceMappingURL=mail.config.js.map
