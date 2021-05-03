@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateRegisterMail = void 0;
+exports.generateForgetPwd = exports.generateRegisterMail = void 0;
 const env_1 = require("../config/env");
 const generateRegisterMail = (to, token) => {
     return {
@@ -14,4 +14,15 @@ const generateRegisterMail = (to, token) => {
     };
 };
 exports.generateRegisterMail = generateRegisterMail;
+const generateForgetPwd = (to, token) => {
+    return {
+        to,
+        html: `<body>
+            <h2> Forget password Mail: </h2>
+              <a href="${env_1.FRONTEND_URL}/#/user/changePwd?token=${token}"> 点击找回密码,十五分钟内有效 </a>
+          </body>`,
+        subject: '找回密码',
+    };
+};
+exports.generateForgetPwd = generateForgetPwd;
 //# sourceMappingURL=email.template.js.map

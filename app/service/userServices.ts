@@ -22,6 +22,19 @@ class UserServices {
       return false
     }
   }
+  async changePwd({
+    email,
+    pwd,
+  }: {
+    email: string
+    pwd: string
+  }): Promise<boolean> {
+    const isSuccess = await userModel
+      .updateOne({ email }, { pwd })
+      .then((result) => !!result.n)
+      .catch(() => false)
+    return isSuccess
+  }
 }
 const userServices = new UserServices()
 export { userServices }

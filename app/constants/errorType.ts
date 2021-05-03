@@ -3,9 +3,17 @@ const USER_ALREADY_EXISTS = {
   stateCode: 400,
   msg: 'user_already_exists',
 }
+const USER_NOT_EXISTS = {
+  stateCode: 400,
+  msg: 'user_not_exists',
+}
 const EMAIL_ALREADY_EXISTS = {
   stateCode: 400,
   msg: 'EMAIL_ALREADY_EXISTS',
+}
+const EMAIL_NOT_EXISTS = {
+  stateCode: 400,
+  msg: 'EMAIL_NOT_EXISTS',
 }
 const USER_DOES_NOT_EXISTS = 'user_does_not_exists'
 const INCORRECT_USERNAME_OR_PASSWORD = {
@@ -15,6 +23,10 @@ const INCORRECT_USERNAME_OR_PASSWORD = {
 const DATA_FORM_ERROR = {
   stateCode: 400,
   msg: 'DATE_FORM_ERROR',
+}
+const INTERNAL_FORGET_CTR_SERVE_ERROR = {
+  stateCode: 500,
+  msg: 'INTERNAL_FORGET_CTR_SERVE_ERROR',
 }
 const INTERNAL_EMAIL_SERVE_ERROR = {
   stateCode: 500,
@@ -38,4 +50,7 @@ export {
   USER_ALREADY_EXISTS,
   INTERNAL_EMAIL_SERVE_ERROR,
   INTERNAL_USER_CREATE_FAILED_ERROR,
+  USER_NOT_EXISTS,
+  EMAIL_NOT_EXISTS,
+  INTERNAL_FORGET_CTR_SERVE_ERROR,
 }

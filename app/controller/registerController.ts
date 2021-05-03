@@ -8,9 +8,7 @@ import {
   INTERNAL_USER_CREATE_FAILED_ERROR,
 } from '../constants/errorType'
 import { userServices } from '../service/userServices'
-import { join } from 'node:path'
-import { myJwt } from '../utils/jsonwebtoken'
-import { createContext } from 'node:vm'
+import { myJwt } from '../service/jsonwebtoken'
 class RegisterController {
   async verifyEmail(ctx: ParameterizedContext, next: Next) {
     const emailIsExits = await userServices.emailIsExits(ctx.request.body.email)

@@ -1,6 +1,6 @@
 import { Next, ParameterizedContext } from 'koa'
 import { INCORRECT_USERNAME_OR_PASSWORD } from '../constants/errorType'
-import { myJwt } from '../utils/jsonwebtoken'
+import { myJwt } from '../service/jsonwebtoken'
 import { userServices } from '../service/userServices'
 class AuthController {
   async login(ctx: ParameterizedContext, next: Next) {

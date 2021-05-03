@@ -5,7 +5,7 @@ const emailServices_1 = require("../service/emailServices");
 const email_template_1 = require("../template/email.template");
 const errorType_1 = require("../constants/errorType");
 const userServices_1 = require("../service/userServices");
-const jsonwebtoken_1 = require("../utils/jsonwebtoken");
+const jsonwebtoken_1 = require("../service/jsonwebtoken");
 class RegisterController {
     async verifyEmail(ctx, next) {
         const emailIsExits = await userServices_1.userServices.emailIsExits(ctx.request.body.email);

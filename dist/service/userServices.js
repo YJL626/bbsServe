@@ -24,6 +24,13 @@ class UserServices {
             return false;
         }
     }
+    async changePwd({ email, pwd, }) {
+        const isSuccess = await database_1.userModel
+            .updateOne({ email }, { pwd })
+            .then((result) => !!result.n)
+            .catch(() => false);
+        return isSuccess;
+    }
 }
 const userServices = new UserServices();
 exports.userServices = userServices;

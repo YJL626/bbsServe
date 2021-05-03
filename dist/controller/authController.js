@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authController = void 0;
 const errorType_1 = require("../constants/errorType");
-const jsonwebtoken_1 = require("../utils/jsonwebtoken");
+const jsonwebtoken_1 = require("../service/jsonwebtoken");
 const userServices_1 = require("../service/userServices");
 class AuthController {
     async login(ctx, next) {
