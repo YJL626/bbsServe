@@ -1,10 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateRegisterMail = void 0;
-const generateRegisterMail = (to, href) => {
+const env_1 = require("../config/env");
+const generateRegisterMail = (to, token) => {
     return {
         to,
-        html: `<body><h2> RegisterMail:  ${href} </h2></body>`,
+        html: `<body>
+            <h2> RegisterMail: 
+              <a href="${env_1.FRONTEND_URL}/#/user/create?token=${token}"> 点击注册,十五分钟内有效 </a>
+            </h2>
+          </body>`,
         subject: 'Register',
     };
 };

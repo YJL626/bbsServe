@@ -21,6 +21,8 @@ class RegisterController {
   }
   async verifyName(ctx: ParameterizedContext, next: Next) {
     const nameIsExits = await userServices.nameIsExits(ctx.request.body.name)
+    console.log(ctx.request.body)
+
     if (nameIsExits) {
       return ctx.app.emit('error', USER_ALREADY_EXISTS, ctx)
     }
@@ -28,6 +30,7 @@ class RegisterController {
   }
   async sendRegisterEmail(ctx: ParameterizedContext, next: Next) {
     const token = await myJwt.sign(ctx.request.body, 60 * 15)
+
     const state = await mailServices.send(
       generateRegisterMail(ctx.request.body.email, token)
     )
