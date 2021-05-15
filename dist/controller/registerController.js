@@ -16,7 +16,6 @@ class RegisterController {
     }
     async verifyName(ctx, next) {
         const nameIsExits = await userServices_1.userServices.nameIsExits(ctx.request.body.name);
-        console.log(ctx.request.body);
         if (nameIsExits) {
             return ctx.app.emit('error', errorType_1.USER_ALREADY_EXISTS, ctx);
         }
@@ -27,6 +26,7 @@ class RegisterController {
         const state = await emailServices_1.mailServices.send(email_template_1.generateRegisterMail(ctx.request.body.email, token));
         if (state) {
             ctx.body = 'sendToUserMail';
+            await next();
         }
         else {
             ctx.app.emit('error', errorType_1.INTERNAL_EMAIL_SERVE_ERROR, ctx);
@@ -37,6 +37,7 @@ class RegisterController {
         if (result) {
             ctx.status = 201;
             ctx.body = '注册成功';
+            await next();
         }
         else {
             ctx.app.emit('emit', errorType_1.INTERNAL_USER_CREATE_FAILED_ERROR, ctx);
@@ -45,6 +46,7 @@ class RegisterController {
     async backUnused(ctx, next) {
         ctx.status = 200;
         ctx.body = 'unused';
+        await next();
     }
 }
 const registerController = new RegisterController();

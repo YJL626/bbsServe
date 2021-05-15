@@ -3,7 +3,7 @@ import { readFile } from 'fs/promises'
 import { resolve } from 'path'
 
 class Jwt {
-  async sign(data: object, expiresIn: number | string) {
+  async sign(data: Record<string, any>, expiresIn: number | string) {
     try {
       const key = await readFile(resolve('./key/rsa_private.key'))
       const jwtData = jwt.sign(data, key, {

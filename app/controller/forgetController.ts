@@ -1,5 +1,4 @@
 import { Next, ParameterizedContext } from 'koa'
-import jwt from 'koa-jwt'
 import {
   EMAIL_NOT_EXISTS,
   INTERNAL_EMAIL_SERVE_ERROR,
@@ -9,8 +8,6 @@ import { mailServices } from '../service/emailServices'
 import { userServices } from '../service/userServices'
 import { generateForgetPwd } from '../template/email.template'
 import { myJwt } from '../service/jsonwebtoken'
-import { userDatabase } from '../config/db.config'
-import { ESTALE } from 'node:constants'
 
 class ForgetController {
   async checkEmailExist(ctx: ParameterizedContext, next: Next) {
@@ -38,6 +35,7 @@ class ForgetController {
     if (isSuccess) {
       ctx.status = 200
       ctx.body = 'changed'
+      await next()
     } else {
       ctx.app.emit('error', INTERNAL_FORGET_CTR_SERVE_ERROR)
     }

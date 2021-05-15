@@ -10,6 +10,7 @@ const readDirModules = (path, ignoreArr) => {
     return fileArr.reduce((acc, fileName) => {
         try {
             //读取模块并推入数组'
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
             const module = Object.values(require(path_1.resolve(path, fileName)));
             acc.push(...module);
         }
@@ -25,9 +26,6 @@ const isRouter = (router) => {
     return !!(router.routes && router.get);
 };
 exports.isRouter = isRouter;
-const isPlainObject = (object) => {
-    return Object.getPrototypeOf(object) === Object.prototype;
-};
 function checkObjectForm(model, data) {
     return Object.keys(model).every((property) => {
         //查询是否有嵌套
@@ -38,7 +36,7 @@ function checkObjectForm(model, data) {
             //递归的进行验证
             return checkObjectForm(model[property], data[property]);
         }
-        return data.hasOwnProperty(property);
+        return Object.prototype.hasOwnProperty.call(data, property);
     });
 }
 exports.checkObjectForm = checkObjectForm;

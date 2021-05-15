@@ -1,4 +1,4 @@
-import { createContext } from 'node:vm'
+import { myObject } from '../type'
 import { userModel } from './database'
 
 class UserServices {
@@ -14,7 +14,7 @@ class UserServices {
     const data = await userModel.findOne(userDate)
     return data
   }
-  async createUser(user: Object) {
+  async createUser(user: myObject) {
     try {
       const result = await new userModel(user).save()
       return result

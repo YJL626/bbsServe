@@ -4,13 +4,14 @@ import { resolve } from 'path'
 
 const readDirModules = (path: string, ignoreArr: Array<RegExp>): any => {
   //筛选一下忽略的数组
-  const fileArr = readdirSync(path).filter(
-    (fileName) => ignoreArr.every((rule) => rule.test(fileName) === false)
+  const fileArr = readdirSync(path).filter((fileName) =>
+    ignoreArr.every((rule) => rule.test(fileName) === false)
   )
   //在try，catch内根据文件名去读取module，
   return fileArr.reduce((acc: Array<any>, fileName) => {
     try {
       //读取模块并推入数组'
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const module = Object.values(require(resolve(path, fileName)))
       acc.push(...module)
     } catch {
@@ -24,11 +25,7 @@ const isRouter = (router: Router) => {
   return !!((router.routes as any) && router.get)
 }
 
-const isPlainObject = (object: object) => {
-  return Object.getPrototypeOf(object) === Object.prototype
-}
-
-function checkObjectForm(model: object, data: object): Boolean {
+function checkObjectForm(model: any, data: Record<string, unknown>): boolean {
   return Object.keys(model).every((property) => {
     //查询是否有嵌套
     if (typeof (model as any)[property] === 'object') {
@@ -37,7 +34,7 @@ function checkObjectForm(model: object, data: object): Boolean {
       //递归的进行验证
       return checkObjectForm((model as any)[property], (data as any)[property])
     }
-    return (data as object).hasOwnProperty(property)
+    return Object.prototype.hasOwnProperty.call(data, property)
   })
 }
 

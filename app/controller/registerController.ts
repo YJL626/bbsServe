@@ -19,7 +19,6 @@ class RegisterController {
   }
   async verifyName(ctx: ParameterizedContext, next: Next) {
     const nameIsExits = await userServices.nameIsExits(ctx.request.body.name)
-    console.log(ctx.request.body)
 
     if (nameIsExits) {
       return ctx.app.emit('error', USER_ALREADY_EXISTS, ctx)
@@ -34,6 +33,7 @@ class RegisterController {
     )
     if (state) {
       ctx.body = 'sendToUserMail'
+      await next()
     } else {
       ctx.app.emit('error', INTERNAL_EMAIL_SERVE_ERROR, ctx)
     }
@@ -43,6 +43,7 @@ class RegisterController {
     if (result) {
       ctx.status = 201
       ctx.body = '注册成功'
+      await next()
     } else {
       ctx.app.emit('emit', INTERNAL_USER_CREATE_FAILED_ERROR, ctx)
     }
@@ -50,6 +51,7 @@ class RegisterController {
   async backUnused(ctx: ParameterizedContext, next: Next) {
     ctx.status = 200
     ctx.body = 'unused'
+    await next()
   }
 }
 const registerController = new RegisterController()

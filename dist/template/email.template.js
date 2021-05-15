@@ -19,7 +19,7 @@ const generateForgetPwd = (to, token) => {
         to,
         html: `<body>
             <h2> Forget password Mail: </h2>
-              <a href="${env_1.FRONTEND_URL}/#/user/changePwd?token=${token}"> 点击找回密码,十五分钟内有效 </a>
+              <a href="${env_1.FRONTEND_URL}/#/changePwd?token=${token}"> 点击找回密码,十五分钟内有效 </a>
           </body>`,
         subject: '找回密码',
     };

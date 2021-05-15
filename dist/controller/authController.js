@@ -21,6 +21,7 @@ class AuthController {
             nickName: result.nickName,
             token,
         };
+        await next();
     }
 }
 const authController = new AuthController();

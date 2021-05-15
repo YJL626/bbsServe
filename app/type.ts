@@ -6,8 +6,8 @@ type mailAcceptConfig = {
 }
 
 type errType = {
-  msg: String
+  msg: string
   stateCode: number
 }
-
-export { errType, mailAcceptConfig }
+type myObject = Record<string, any>
+export { errType, mailAcceptConfig, myObject }

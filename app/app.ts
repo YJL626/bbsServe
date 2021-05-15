@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
 
-import Koa, { Next, ParameterizedContext } from 'koa'
+import Koa from 'koa'
 import koaBody from 'koa-body'
 import cors from '@koa/cors'
 import koaJwt from 'koa-jwt'

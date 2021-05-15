@@ -9,10 +9,8 @@ class Verify {
             try {
                 const reqBody = ctx.request.body;
                 //检测reqBody的结构和model是否一致
-                let isIntegrity = Array.isArray(model)
-                    ? model.every((property) => {
-                        return reqBody.hasOwnProperty([property]);
-                    })
+                const isIntegrity = Array.isArray(model)
+                    ? model.every((property) => Object.prototype.hasOwnProperty.call(reqBody, property))
                     : utils_1.checkObjectForm(model, reqBody);
                 if (isIntegrity) {
                     //结构符合预期则next
@@ -33,9 +31,9 @@ class Verify {
             try {
                 const token = ctx.state.user;
                 //检测token的结构和model是否一致
-                let isIntegrity = Array.isArray(model)
+                const isIntegrity = Array.isArray(model)
                     ? model.every((property) => {
-                        return token.hasOwnProperty([property]);
+                        return Object.prototype.hasOwnProperty.call(token, property);
                     })
                     : utils_1.checkObjectForm(model, token);
                 if (isIntegrity) {
